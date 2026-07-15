@@ -6,6 +6,7 @@
 #include <windows.h>
 #include "plugin_api.h"
 #include "game_memory.h"
+#include <imgui.h>
 
 class PluginManager : public IPluginHost {
 public:
@@ -16,7 +17,8 @@ public:
 
     // IPluginHost
     void         Log(const std::string& message) override;
-    IGameMemory* GetGameMemory() override { return &GameMemory::Get(); }
+    IGameMemory* GetGameMemory()   override { return &GameMemory::Get(); }
+    void*        GetImGuiContext() override { return ImGui::GetCurrentContext(); }
 
 private:
     PluginManager() = default;
