@@ -17,7 +17,9 @@ void Console::Log(const std::string& message) {
     auto now  = std::chrono::system_clock::now();
     std::time_t t = std::chrono::system_clock::to_time_t(now);
     char buf[16];
-    std::strftime(buf, sizeof(buf), "%H:%M:%S", std::localtime(&t));
+    struct tm tmInfo;
+    localtime_s(&tmInfo, &t);
+    std::strftime(buf, sizeof(buf), "%H:%M:%S", &tmInfo);
 
     m_logLines.push_back(std::string("[") + buf + "] " + message);
     m_scrollToBottom = true;
