@@ -1,9 +1,11 @@
 #pragma once
+#ifndef RLMOD_GAME_MEMORY_H
+#define RLMOD_GAME_MEMORY_H
 #include <windows.h>
 #include <string>
 #include <vector>
 #include <cstdint>
-#include "../include/plugin_api.h"
+#include "plugin_api.h"
 
 /**
  * GameMemory
@@ -63,3 +65,4 @@ private:
     DWORD     m_pid      = 0;
     uintptr_t m_baseAddr = 0;
 };
+#endif // RLMOD_GAME_MEMORY_H
