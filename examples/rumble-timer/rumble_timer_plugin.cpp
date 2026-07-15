@@ -115,7 +115,8 @@ public:
 
             ImGui::SetNextItemWidth(180.f);
             ImGui::InputFloat("New value (seconds)", &m_newValue, 0.5f, 1.0f, "%.1f");
-            m_newValue = ImClamp(m_newValue, 0.f, 60.f);
+            if (m_newValue < 0.f)  m_newValue = 0.f;
+            if (m_newValue > 60.f) m_newValue = 60.f;
 
             ImGui::Spacing();
 
