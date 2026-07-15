@@ -18,6 +18,8 @@ public:
 
     void OnLoad(IPluginHost* host) override {
         m_host = host;
+        // Sync this DLL's ImGui context with the host's so UI calls don't crash.
+        ImGui::SetCurrentContext(static_cast<ImGuiContext*>(host->GetImGuiContext()));
         m_host->Log("Hello Plugin loaded! This is your first RLMod plugin.");
     }
 
