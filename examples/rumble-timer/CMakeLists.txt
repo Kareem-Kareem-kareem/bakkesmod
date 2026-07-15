@@ -1,8 +1,13 @@
 # Built as a subdirectory of the main project.
-# imgui is already fetched by the root CMakeLists — reuse it.
+# imgui is already fetched by the root CMakeLists — reuse imgui_SOURCE_DIR.
+# Each plugin DLL must compile ImGui itself; it cannot share symbols with RLMod.exe.
 
 add_library(RumbleTimerPlugin SHARED
     rumble_timer_plugin.cpp
+    ${imgui_SOURCE_DIR}/imgui.cpp
+    ${imgui_SOURCE_DIR}/imgui_draw.cpp
+    ${imgui_SOURCE_DIR}/imgui_tables.cpp
+    ${imgui_SOURCE_DIR}/imgui_widgets.cpp
 )
 
 target_include_directories(RumbleTimerPlugin PRIVATE
