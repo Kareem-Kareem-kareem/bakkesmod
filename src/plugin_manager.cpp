@@ -1,5 +1,6 @@
 #include "plugin_manager.h"
 #include "console.h"
+#include "game_memory.h"
 #include <filesystem>
 #include <sstream>
 
@@ -95,3 +96,4 @@ void PluginManager::UnloadAll() {
 void PluginManager::Log(const std::string& message) {
     Console::Get().Log(message);
 }
+
