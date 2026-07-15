@@ -1,4 +1,6 @@
 #pragma once
+#ifndef RLMOD_PLUGIN_API_H
+#define RLMOD_PLUGIN_API_H
 /**
  * RLMod Plugin API
  * ─────────────────────────────────────────────────────────────────────────────
@@ -77,3 +79,4 @@ struct IPlugin {
 
 // ── Convenience macro for plugin DLLs ────────────────────────────────────────
 #define RLMOD_PLUGIN_EXPORT extern "C" __declspec(dllexport)
+#endif // RLMOD_PLUGIN_API_H
