@@ -30,10 +30,10 @@ jobs:
       - name: Gather build output
         shell: pwsh
         run: |
-          New-Item -ItemType Directory -Force -Path dist | Out-Null
-          Copy-Item build\Release\RLMod.exe dist\
-          # Create an empty plugins folder so users know where to drop DLLs
           New-Item -ItemType Directory -Force -Path dist\plugins | Out-Null
+          Copy-Item build\Release\RLMod.exe dist\
+          # Copy all built plugin DLLs into the plugins folder
+          Get-ChildItem build\Release\*.dll | Copy-Item -Destination dist\plugins\
           # Copy README for context
           Copy-Item README.md dist\
 
