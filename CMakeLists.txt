@@ -30,6 +30,7 @@ add_executable(RLMod WIN32
     src/overlay.cpp
     src/console.cpp
     src/plugin_manager.cpp
+    src/game_memory.cpp
     ${IMGUI_SOURCES}
 )
 
