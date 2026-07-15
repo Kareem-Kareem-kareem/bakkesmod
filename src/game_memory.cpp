@@ -170,7 +170,7 @@ uintptr_t GameMemory::PatternScan(const std::string& pattern) const {
             size_t    remaining  = mbi.RegionSize;
 
             while (remaining > 0) {
-                size_t toRead = min(remaining, CHUNK);
+                size_t toRead = (remaining < CHUNK) ? remaining : CHUNK;
                 SIZE_T bytesRead = 0;
                 if (ReadProcessMemory(m_handle,
                         reinterpret_cast<LPCVOID>(regionBase),
