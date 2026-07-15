@@ -62,6 +62,12 @@ struct IPluginHost {
 
     // Access to the game's process memory (may return nullptr if not attached).
     virtual IGameMemory* GetGameMemory() = 0;
+
+    // Returns the host's ImGuiContext* as void* so plugin_api.h doesn't need
+    // to include imgui.h. Cast to ImGuiContext* and call
+    // ImGui::SetCurrentContext() in your plugin's OnLoad() — required because
+    // each DLL compiles its own copy of ImGui with a separate GImGui pointer.
+    virtual void* GetImGuiContext() = 0;
 };
 
 // ── Plugin interface ──────────────────────────────────────────────────────────
