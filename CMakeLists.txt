@@ -64,3 +64,7 @@ endif()
 # ── Plugin SDK (header-only, used by plugin DLLs) ─────────────────────────────
 add_library(RLModPluginSDK INTERFACE)
 target_include_directories(RLModPluginSDK INTERFACE include)
+
+# ── Example plugins ───────────────────────────────────────────────────────────
+add_subdirectory(examples/hello-plugin)
+add_subdirectory(examples/rumble-timer)
