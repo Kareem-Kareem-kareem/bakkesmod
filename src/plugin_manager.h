@@ -5,6 +5,7 @@
 #include <vector>
 #include <windows.h>
 #include "plugin_api.h"
+#include "game_memory.h"
 
 class PluginManager : public IPluginHost {
 public:
@@ -15,7 +16,7 @@ public:
 
     // IPluginHost
     void         Log(const std::string& message) override;
-    IGameMemory* GetGameMemory()                 override;
+    IGameMemory* GetGameMemory() override { return &GameMemory::Get(); }
 
 private:
     PluginManager() = default;
