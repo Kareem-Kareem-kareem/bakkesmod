@@ -52,6 +52,8 @@ public:
     void OnLoad(IPluginHost* host) override {
         m_host = host;
         m_mem  = host->GetGameMemory();
+        // Sync this DLL's ImGui context with the host's so UI calls don't crash.
+        ImGui::SetCurrentContext(static_cast<ImGuiContext*>(host->GetImGuiContext()));
         host->Log("Rumble Timer plugin loaded.");
 
         if (!m_mem || !m_mem->IsAttached()) {
